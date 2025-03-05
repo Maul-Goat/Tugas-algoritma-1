@@ -14,13 +14,6 @@ void menu(int totaldata, data d[]);
 
 int main(){
     struct data d[15] ={
-        {"Aditya Pratama", 124240001, 3.75},
-        {"Budi Santoso", 124240002, 3.60},
-        {"Cindy Maharani", 124240003, 3.80},
-        {"Dimas Ramadhan", 124240004, 3.45},
-        {"Erika Salsabila", 124240005, 3.90},
-        {"Fajar Nugroho", 124240006, 3.50},
-        {"Galih Permana", 124240007, 3.65},
         {"Hana Putri", 124240008, 3.85},
         {"Indra Wijaya", 124240009, 3.70},
         {"Joko Setiawan", 124240010, 3.55},
@@ -28,6 +21,13 @@ int main(){
         {"Luthfi Hidayat", 124240012, 3.40},
         {"Mega Pertiwi", 124240013, 3.75},
         {"Nanda Prasetyo", 124240014, 3.30},
+        {"Aditya Pratama", 124240001, 3.75},
+        {"Budi Santoso", 124240002, 3.60},
+        {"Cindy Maharani", 124240003, 3.80},
+        {"Dimas Ramadhan", 124240004, 3.45},
+        {"Erika Salsabila", 124240005, 3.90},
+        {"Fajar Nugroho", 124240006, 3.50},
+        {"Galih Permana", 124240007, 3.65},
         {"Oka Wibisono", 124240015, 3.85}
     };
     int totaldata = 15;
@@ -124,6 +124,14 @@ void searchnama(int totaldata, data d[]) { //mencari nama
     cout << "Masukkan nama yang ingin dicari: ";
     cin.ignore();
     getline(cin, nama);
+
+    for (int i = 0; i < totaldata - 1; i++) {
+        for (int j = 0; j < totaldata - i - 1; j++) {
+            if (d[j].nama > d[j + 1].nama) {
+                swap(d[j], d[j + 1]);
+            }
+        }
+    }
     
     int left = 0;
     int right = totaldata - 1;
@@ -151,7 +159,6 @@ void searchnama(int totaldata, data d[]) { //mencari nama
                 cout << "NIM\t\t: " << d[i].nim << endl;
                 cout << "IPK\t\t: " << d[i].ipk << endl;
             }
-            
             break;
         }
         else if (d[mid].nama < nama) {
